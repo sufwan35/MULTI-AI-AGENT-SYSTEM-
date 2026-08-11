@@ -11,7 +11,7 @@ import re
 load_dotenv()
 tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
 
-@tool
+
 def _search_web(query: str) -> str:
     """
     Search the web for a given query and return the results.  
@@ -23,8 +23,11 @@ def _search_web(query: str) -> str:
     return "\n".join(out)
 
 
+# Wrap with LangChain tool to support .invoke()
+search_web = tool(_search_web)
+
    
-@tool
+@tool 
 def scrape_url(url: str) -> str:
     """
     Scrape and extract clean readable content from a URL.

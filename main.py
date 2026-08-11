@@ -1,3 +1,4 @@
-from SRC.TOOLS.Tools import search_web,scrape_url
-r=search_web.invoke("How to make a website?")
-print(r)
+from SRC.PIPELINES.PIPELINES import run_research_pipeline 
+
+topic="Artificial Intelligence in Healthcare"
+run_research_pipeline(topic)
